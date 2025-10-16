@@ -1,29 +1,20 @@
-"use client";
-
+// app/components/LandingFactory.jsx
 import React from "react";
-import { Check } from "lucide-react";
 
-// ==========================
-// CONFIGURAÇÕES DE PRODUTOS
-// ==========================
+// Configuração das páginas
 const CONFIG = {
   ENCCEJA: {
     brand: {
-      name: "Clube Aprova ENCCEJA",
-      tagline: "Seu diploma do ensino médio começa aqui",
+      name: "Clube do ENCCEJA",
+      tagline: "Aulas online e apoio completo para sua aprovação",
       primary: "#0ea5e9",
       secondary: "#fbbf24",
       dark: "#0b1220",
     },
     hero: {
-      eyebrow: "Clube de Assinaturas · ENCCEJA",
-      headline: "Passe no ENCCEJA com estudo guiado e leve",
-      subheadline:
-        "Aulas on-line, trilhas semanais e suporte para você conquistar seu diploma.",
-      ctaPrimary: "Entrar no Clube",
-      ctaSecondary: "Ver plano por dentro",
+      eyebrow: "Clube ENCCEJA",
+      headline: "Garanta já sua aprovação!",
       backgroundImage: "/assets/clubeenceeja.png",
-      backgroundFixed: true,
     },
     offer: {
       bullets: [
@@ -33,9 +24,9 @@ const CONFIG = {
         "Comunidade no WhatsApp para tirar dúvidas",
       ],
       priceText: "Planos a partir de R$29/mês",
+      groupLink: "https://chat.whatsapp.com/...",
+      payLink: "https://mpago.li/...",
     },
-    groupLink: "https://chat.whatsapp.com/EhYhaIcxCvO7Cq2gBeceMd?mode=wwc",
-    payLink: "https://mpago.li/1meRf21",
   },
 
   PedroII: {
@@ -47,211 +38,115 @@ const CONFIG = {
       dark: "#0b1220",
     },
     hero: {
-      eyebrow: "Mentoria Express · Pedro II",
-      headline: "Ainda dá tempo de garantir sua vaga!",
-      subheadline:
-        "Mentoria prática com revisões focadas, simulados e plano de estudo até a prova.",
-      ctaPrimary: "Garantir minha vaga",
-      ctaSecondary: "Ver como funciona",
+      eyebrow: "Mentoria Express - Pedro II",
+      headline: "Ainda dá tempo",
       backgroundImage: "/assets/colegiocp2.png",
-      backgroundFixed: true,
     },
-    offer: {
-      bullets: [
-        "Aulão Premonição (o que mais cai)",
-        "Simulado com correção comentada",
-        "Plano semanal até 02/11/2025",
-        "Grupo no WhatsApp com lembretes diários",
-      ],
-      priceText: "Somente R$97,00",
-    },
-    groupLink: "https://chat.whatsapp.com/HPO5mIWOuOvKpYzHjNSJng?mode=wwc",
-    payLink: "https://mpago.li/1RdTFbM",
   },
 
   IFRJ: {
     brand: {
-      name: "Mentoria IFRJ",
-      tagline: "Foco total no que mais cai",
+      name: "Preparatório IFRJ",
+      tagline: "Domine os principais conteúdos do exame",
       primary: "#0ea5e9",
       secondary: "#fbbf24",
       dark: "#0b1220",
     },
     hero: {
-      eyebrow: "Mentoria · IFRJ",
-      headline: "Foco total no que mais cai no IFRJ",
-      subheadline:
-        "Aulões direcionados, simulados por área e revisão relâmpago.",
-      ctaPrimary: "Quero entrar",
-      ctaSecondary: "Ver cronograma",
+      eyebrow: "Preparatório IFRJ",
+      headline: "Estude com foco e eficiência",
       backgroundImage: "/assets/ifrjimagem.png",
-      backgroundFixed: true,
     },
-    offer: {
-      bullets: [
-        "Mapa de competências do edital",
-        "Questões no estilo IFRJ, com comentário",
-        "Revisões 30–40 min por tópico",
-        "Checklist de última hora",
-      ],
-      priceText: "A partir de R$97,00",
-    },
-    groupLink: "https://chat.whatsapp.com/FgNimaljASF7uHwMM4bLrN?mode=wwc",
-    payLink: "https://mpago.li/1RdTFbM",
   },
 
-  UERJQuimica: {
+  UERJ: {
     brand: {
-      name: "Mentoria UERJ Química",
-      tagline: "Acerte Química na UERJ com técnica e prática",
+      name: "UERJ Química",
+      tagline: "Preparação completa em química",
       primary: "#0ea5e9",
       secondary: "#fbbf24",
       dark: "#0b1220",
     },
     hero: {
-      eyebrow: "Mentoria · UERJ (Química)",
-      headline: "Acerte Química na UERJ com técnica e prática",
-      subheadline:
-        "Trilhas objetivas, resolução de questões UERJ e revisão das pegadinhas.",
-      ctaPrimary: "Garantir minha vaga",
-      ctaSecondary: "Ver cronograma",
+      eyebrow: "UERJ - Química",
+      headline: "Conquiste sua vaga!",
       backgroundImage: "/assets/uerjimagem.png",
-      backgroundFixed: true,
     },
-    offer: {
-      bullets: [
-        "Estequiometria, soluções e termoquímica no ponto",
-        "Questões clássicas UERJ por assunto (comentadas)",
-        "Simulado UERJ + revisão final",
-        "Mapa de fórmulas e erros comuns",
-      ],
-      priceText: "Somente R$97,00",
-    },
-    groupLink: "https://chat.whatsapp.com/DRI4lqURAk69zjCJYCoS6p?mode=wwc",
-    payLink: "https://mpago.li/1RdTFbM",
   },
 
   Reforco: {
     brand: {
       name: "Reforço Escolar",
-      tagline: "Transformando dificuldades em aprendizado",
+      tagline: "Apoio em matemática, química e física",
       primary: "#0ea5e9",
       secondary: "#fbbf24",
       dark: "#0b1220",
     },
     hero: {
-      eyebrow: "Reforço Escolar",
-      headline: "Aulas de reforço personalizadas",
-      subheadline:
-        "Química, Física e Matemática para ensino médio — acompanhamento passo a passo.",
-      ctaPrimary: "Falar com a professora",
-      ctaSecondary: "Ver disciplinas",
+      eyebrow: "Reforço Inteligente",
+      headline: "Transformando dificuldades em aprendizado",
       backgroundImage: "/assets/reforco.png",
-      backgroundFixed: false,
     },
-    offer: {
-      bullets: [
-        "Atendimento individual ou em grupo",
-        "Material complementar incluso",
-        "Foco nas suas dificuldades",
-        "Horários flexíveis",
-      ],
-      priceText: "Entre em contato para valores",
-    },
-    groupLink: "#coloque_o_link_do_grupo_reforco",
-    payLink: "",
-  },
-
-  Personal: {
-    brand: {
-      name: "Prof. Luana Araujo",
-      tagline: "Transformando dificuldades em aprendizado",
-      primary: "#0ea5e9",
-      secondary: "#fbbf24",
-      dark: "#0b1220",
-    },
-    hero: {
-      eyebrow: "Sobre mim",
-      headline: "Ajudo estudantes a destravar o estudo e alcançar aprovações",
-      subheadline:
-        "Mais de 15 anos de sala de aula. Metodologia prática e acompanhamento real.",
-      ctaPrimary: "Conheça meus programas",
-      ctaSecondary: "Falar comigo",
-      backgroundImage: "/assets/uerjimagem.png",
-      backgroundFixed: false,
-    },
-    offer: {
-      bullets: [
-        "Metodologia leve e consistente",
-        "Materiais autorais e simulados comentados",
-        "Acompanhamento pelo WhatsApp",
-      ],
-      priceText: "",
-    },
-    groupLink: "https://wa.me/5521997331448",
-    payLink: "",
   },
 };
 
-// ==========================
-// COMPONENTE PRINCIPAL
-// ==========================
-export default function LandingFactory({ siteKey = "Personal" }) {
-  const cfg = CONFIG[siteKey] || CONFIG.Personal;
+// Componente que renderiza dinamicamente cada página
+export default function LandingFactory({ siteKey }) {
+  const site = CONFIG[siteKey];
+
+  if (!site) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <h1 className="text-2xl font-bold text-red-600">
+          Página não encontrada
+        </h1>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      {/* Hero */}
-      <section
-        className="text-white text-center py-20"
-        style={{
-          backgroundImage: `url(${cfg.hero.backgroundImage})`,
-          backgroundSize: "cover",
-          backgroundAttachment: cfg.hero.backgroundFixed ? "fixed" : "scroll",
-        }}
-      >
-        <h3 className="uppercase tracking-wide">{cfg.hero.eyebrow}</h3>
-        <h1 className="text-4xl font-bold mt-2">{cfg.hero.headline}</h1>
-        <p className="mt-4 text-lg">{cfg.hero.subheadline}</p>
+    <div
+      className="min-h-screen bg-cover bg-center text-white"
+      style={{ backgroundImage: `url(${site.hero.backgroundImage})` }}
+    >
+      {/* Hero Section */}
+      <div className="bg-black bg-opacity-60 p-8">
+        <h4 className="text-sm uppercase tracking-wide text-yellow-400">
+          {site.hero.eyebrow}
+        </h4>
+        <h1 className="text-4xl font-bold">{site.hero.headline}</h1>
+        <p className="mt-2 text-lg">{site.brand.tagline}</p>
+      </div>
 
-        <div className="mt-6 flex justify-center gap-4">
-          {cfg.payLink && (
+      {/* Oferta (se existir) */}
+      {site.offer && (
+        <div className="p-8 bg-white text-black">
+          <h2 className="text-2xl font-semibold mb-4">O que você recebe:</h2>
+          <ul className="list-disc pl-6 space-y-2">
+            {site.offer.bullets.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+          <p className="mt-4 font-bold">{site.offer.priceText}</p>
+
+          <div className="mt-4 flex space-x-4">
             <a
-              href={cfg.payLink}
-              className="px-6 py-3 rounded-xl font-semibold"
-              style={{
-                backgroundColor: cfg.brand.secondary,
-                color: cfg.brand.dark,
-              }}
+              href={site.offer.groupLink}
+              target="_blank"
+              className="px-4 py-2 bg-green-600 text-white rounded"
             >
-              {cfg.hero.ctaPrimary}
+              Entrar no grupo
             </a>
-          )}
-          {cfg.groupLink && (
             <a
-              href={cfg.groupLink}
-              className="px-6 py-3 rounded-xl border font-semibold"
+              href={site.offer.payLink}
+              target="_blank"
+              className="px-4 py-2 bg-blue-600 text-white rounded"
             >
-              {cfg.hero.ctaSecondary}
+              Fazer pagamento
             </a>
-          )}
+          </div>
         </div>
-      </section>
-
-      {/* Oferta */}
-      <section className="max-w-3xl mx-auto py-12 px-4">
-        <h2 className="text-2xl font-bold text-center mb-6">O que você recebe</h2>
-        <ul className="space-y-3">
-          {cfg.offer.bullets.map((item, i) => (
-            <li key={i} className="flex items-center gap-2">
-              <Check className="text-green-500" /> {item}
-            </li>
-          ))}
-        </ul>
-        {cfg.offer.priceText && (
-          <p className="text-center mt-6 font-semibold">{cfg.offer.priceText}</p>
-        )}
-      </section>
+      )}
     </div>
   );
 }
