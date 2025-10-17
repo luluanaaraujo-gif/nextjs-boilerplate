@@ -8,37 +8,30 @@ export const metadata = {
 
 export default function SobrePage() {
   return (
-    <main className="max-w-5xl mx-auto px-6 py-10 space-y-12">
-      <section>
-        <h1 className="text-3xl font-bold text-[#0f26d5]">Sobre mim</h1>
+    <main className="max-w-5xl mx-auto px-6 py-12 space-y-12">
+      {/* Seção de apresentação */}
+      <section className="text-center">
+        <h1 className="text-3xl font-bold text-amber-600">Sobre mim</h1>
         <p className="mt-4 text-gray-700 leading-relaxed">
           Sou professora e mentora com mais de 15 anos de experiência ajudando
-          alunos a transformar dificuldades em aprendizado, com foco em ENCCEJA,
+          alunos a superar dificuldades em aprendizado, com foco em ENCCEJA,
           IFRJ, UERJ (Química) e CEFET. Minha abordagem é prática, clara e
           motivadora.
         </p>
       </section>
 
+      {/* Serviços */}
       <section>
-        <h2 className="text-2xl font-semibold text-gray-800">
-          Serviços oferecidos
+        <h2 className="text-2xl font-semibold text-amber-500 mb-4">
+          Serviços e mentorias
         </h2>
-        <ul className="mt-3 list-disc list-inside text-gray-700 space-y-2">
-          <li>📘 Mentoria para o ENCCEJA</li>
-          <li>🔬 Preparação para provas do IFRJ</li>
-          <li>🧪 Reforço em Química (UERJ)</li>
-          <li>🏫 Apoio para ingresso no CEFET</li>
+        <ul className="space-y-3 text-gray-700">
+          <li>✅ Clube Aprova ENCCEJA</li>
+          <li>✅ Mentoria Pedro II</li>
+          <li>✅ Preparação IFRJ & UERJ (Química)</li>
+          <li>✅ Mentoria CEFET</li>
         </ul>
       </section>
-
-      <div className="pt-6">
-        <a
-          href="/cefet"
-          className="inline-block bg-amber-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-amber-600 transition"
-        >
-          Mentoria CEFET
-        </a>
-      </div>
     </main>
   );
 }
