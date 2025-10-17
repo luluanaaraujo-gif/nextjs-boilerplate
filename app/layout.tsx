@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               Prof. Luana Araújo
             </h1>
             <p className="text-[#0b1220]/80 mt-2">
-              Transformando dificuldades em aprendizado. Mais de 15 anos de experiência ajudando alunos a conquistar seus objetivos.
+              Transformando dificuldades em aprendizado. Mais de 20 anos de experiência ajudando alunos a conquistar seus objetivos.
             </p>
 
             {/* Botões */}
