@@ -1,11 +1,22 @@
 // app/layout.tsx
 import "./globals.css";
 import type { Metadata } from "next";
-import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Prof. Luana Araújo",
-  description: "Transformando dificuldades em aprendizado.",
+  title: {
+    default: "Prof. Luana Araújo",
+    template: "%s • Prof. Luana Araújo",
+  },
+  description:
+    "Mentorias Pedro II, IFRJ, UERJ (Química) e Clube Aprova ENCCEJA.",
+  openGraph: { images: ["/assets/luana-hero.png"] },
+};
+
+const PALETTE = {
+  amber: "#f5b342",
+  gold: "#f2b233",
+  navy: "#0f2d5c",
+  ink: "#0b1220",
 };
 
 export default function RootLayout({
@@ -15,43 +26,68 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className="bg-white text-gray-900">
-        {/* Header */}
-        <header className="bg-amber-500 text-white py-6 shadow-md">
-          <div className="container mx-auto flex items-center justify-between px-6">
-            <div className="flex items-center space-x-4">
-              <Image
-                src="/assets/luana-hero.png"
-                alt="Foto de Luana Araújo"
-                width={60}
-                height={60}
-                className="rounded-full ring-2 ring-offset-2 ring-white"
-              />
-              <h1 className="text-xl font-bold">Prof. Luana Araújo</h1>
+      <body className="bg-white text-gray-900 antialiased">
+        {/* NAVBAR FIXA */}
+        <header
+          className="sticky top-0 z-50 backdrop-blur-md border-b"
+          style={{ borderColor: "#eef2f7", background: "rgba(255,255,255,.8)" }}
+        >
+          <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            {/* Marca (SEM ringColor e SEM classes traduzidas) */}
+            <a href="/" className="flex items-center gap-3">
+              <span
+                className="h-9 w-9 rounded-full overflow-hidden border-2"
+                style={{ borderColor: PALETTE.amber }}
+              >
+                <img
+                  src="/assets/luana-hero.png"
+                  alt="Luana Araújo"
+                  className="h-full w-full object-cover"
+                />
+              </span>
+              <span className="font-semibold" style={{ color: PALETTE.navy }}>
+                Prof. Luana Araújo
+              </span>
+            </a>
+
+            <div className="flex items-center gap-2">
+              <a
+                href="/acesso"
+                className="px-4 py-2 rounded-xl font-semibold border transition hover:-translate-y-0.5"
+                style={{
+                  borderColor: "rgba(0,0,0,.08)",
+                  color: PALETTE.navy,
+                  background: "rgba(255,255,255,.95)",
+                }}
+              >
+                Tenho um código
+              </a>
+              <a
+                href="https://wa.me/5521997331448"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-xl font-semibold shadow hover:shadow-lg transition"
+                style={{
+                  background: `linear-gradient(90deg, ${PALETTE.amber}, ${PALETTE.gold})`,
+                  color: "#0b1220",
+                }}
+              >
+                WhatsApp
+              </a>
             </div>
-            <nav className="space-x-6 text-sm font-medium">
-              <a href="/" className="hover:underline">
-                Início
-              </a>
-              <a href="/servicos" className="hover:underline">
-                Serviços
-              </a>
-              <a href="/contato" className="hover:underline">
-                Contato
-              </a>
-            </nav>
-          </div>
+          </nav>
         </header>
 
-        {/* Conteúdo */}
-        <main className="container mx-auto px-6 py-12">{children}</main>
+        {/* CONTEÚDO */}
+        {children}
 
-        {/* Footer */}
-        <footer className="bg-blue-900 text-white text-center py-6 mt-12">
-          <p>
-            © {new Date().getFullYear()} Prof. Luana Araújo — Transformando
-            dificuldades em aprendizado
-          </p>
+        {/* RODAPÉ */}
+        <footer
+          className="text-center text-sm text-gray-500 py-6 border-t"
+          style={{ borderColor: "#eef2f7" }}
+        >
+          © {new Date().getFullYear()} Prof. Luana Araújo • Todos os direitos
+          reservados
         </footer>
       </body>
     </html>
