@@ -27,13 +27,11 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className="bg-white text-gray-900 antialiased">
-        {/* NAVBAR FIXA */}
         <header
           className="sticky top-0 z-50 backdrop-blur-md border-b"
           style={{ borderColor: "#eef2f7", background: "rgba(255,255,255,.8)" }}
         >
           <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            {/* Marca (SEM ringColor e SEM classes traduzidas) */}
             <a href="/" className="flex items-center gap-3">
               <span
                 className="h-9 w-9 rounded-full overflow-hidden border-2"
@@ -78,10 +76,8 @@ export default function RootLayout({
           </nav>
         </header>
 
-        {/* CONTEÚDO */}
         {children}
 
-        {/* RODAPÉ */}
         <footer
           className="text-center text-sm text-gray-500 py-6 border-t"
           style={{ borderColor: "#eef2f7" }}
