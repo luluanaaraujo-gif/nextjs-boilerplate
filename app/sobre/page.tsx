@@ -4,16 +4,15 @@ import React from "react";
 export const metadata = {
   title: "Sobre • Prof. Luana Araújo",
   description:
-    "Sobre a Prof. Luana Araújo e suas mentorias (ENCCEJA, IFRJ, UERJ Química e CEFET).",
+    "Sobre a Prof. Luana Araújo e suas mentorias (ENCCEJA, IFRJ, UERJ, CEFET).",
 };
 
 export default function SobrePage() {
   return (
-    <main className="section space-y-10">
-      {/* SOBRE MIM */}
-      <section className="space-y-4">
-        <h1 className="h1">Sobre mim</h1>
-        <p className="lead">
+    <main className="max-w-5xl mx-auto px-6 py-12 space-y-12">
+      <section>
+        <h1 className="text-3xl font-bold text-gray-900">Sobre mim</h1>
+        <p className="mt-4 text-gray-700 leading-relaxed">
           Sou professora e mentora com mais de 15 anos de experiência ajudando
           alunos a transformar dificuldades em aprendizado. Atuo com foco em
           ENCCEJA, IFRJ, UERJ (Química) e CEFET. Minha abordagem é prática,
@@ -22,106 +21,48 @@ export default function SobrePage() {
         </p>
       </section>
 
-      {/* MENTORIAS EM CARDS */}
-      <section className="space-y-6">
-        <h2 className="h2 text-amber-600">Mentorias</h2>
+      <section>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-6">Mentorias</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {/* ENCCEJA */}
-          <article className="card">
-            <div className="card-body">
-              <h3 className="h3">Clube Aprova ENCCEJA</h3>
-              <p className="lead mt-2">
-                Trilhas semanais, aulas objetivas e checklist do que mais cai.
-                Comunidade no WhatsApp e plano claro até a prova.
-              </p>
-              <div className="mt-4 flex gap-3">
-                <a href="/encceja" className="btn-primary">
-                  Ver detalhes
-                </a>
-                <a
-                  href="https://wa.me/5521997331448"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-outline"
-                >
-                  WhatsApp
-                </a>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            {
+              title: "Clube Aprova ENCCEJA",
+              desc: "Trilhas semanais, aulas objetivas e checklist do que mais cai.",
+              link: "#",
+            },
+            {
+              title: "Preparação IFRJ",
+              desc: "Conteúdos-chave com foco em exercícios e simulados estratégicos.",
+              link: "#",
+            },
+            {
+              title: "UERJ • Química",
+              desc: "Revisão dirigida, listas comentadas e mapa do que mais cai.",
+              link: "#",
+            },
+            {
+              title: "Mentoria CEFET",
+              desc: "Planejamento prático e acompanhamento de perto até a prova.",
+              link: "#",
+            },
+          ].map((mentoria, i) => (
+            <div
+              key={i}
+              className="bg-white border rounded-xl shadow-md p-6 hover:shadow-lg transition"
+            >
+              <h3 className="text-xl font-semibold text-gray-800">
+                {mentoria.title}
+              </h3>
+              <p className="text-gray-600 mt-2">{mentoria.desc}</p>
+              <a
+                href={mentoria.link}
+                className="inline-block mt-4 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600"
+              >
+                Ver detalhes
+              </a>
             </div>
-          </article>
-
-          {/* IFRJ */}
-          <article className="card">
-            <div className="card-body">
-              <h3 className="h3">Preparação IFRJ</h3>
-              <p className="lead mt-2">
-                Conteúdos-chave com foco em resolução de exercícios e simulados
-                estratégicos. Metodologia simples e direta.
-              </p>
-              <div className="mt-4 flex gap-3">
-                <a href="/ifj" className="btn-primary">
-                  Ver detalhes
-                </a>
-                <a
-                  href="https://wa.me/5521997331448"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-outline"
-                >
-                  WhatsApp
-                </a>
-              </div>
-            </div>
-          </article>
-
-          {/* UERJ Química */}
-          <article className="card">
-            <div className="card-body">
-              <h3 className="h3">UERJ • Química</h3>
-              <p className="lead mt-2">
-                Reforço em Química voltado para prova: revisão dirigida, listas
-                comentadas e mapa do que mais cai.
-              </p>
-              <div className="mt-4 flex gap-3">
-                <a href="/uerj-quimica" className="btn-primary">
-                  Ver detalhes
-                </a>
-                <a
-                  href="https://wa.me/5521997331448"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-outline"
-                >
-                  WhatsApp
-                </a>
-              </div>
-            </div>
-          </article>
-
-          {/* CEFET */}
-          <article className="card">
-            <div className="card-body">
-              <h3 className="h3">Mentoria CEFET</h3>
-              <p className="lead mt-2">
-                Planejamento prático, revisão do que mais cai e
-                acompanhamento de perto para você chegar confiante na prova.
-              </p>
-              <div className="mt-4 flex gap-3">
-                <a href="/cefet" className="btn-primary">
-                  Ver detalhes
-                </a>
-                <a
-                  href="https://wa.me/5521997331448"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-outline"
-                >
-                  WhatsApp
-                </a>
-              </div>
-            </div>
-          </article>
+          ))}
         </div>
       </section>
     </main>
