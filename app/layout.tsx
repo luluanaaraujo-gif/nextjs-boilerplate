@@ -27,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className="bg-white text-gray-900 antialiased">
+        {/* NAVBAR FIXA */}
         <header
           className="sticky top-0 z-50 backdrop-blur-md border-b"
           style={{ borderColor: "#eef2f7", background: "rgba(255,255,255,.8)" }}
@@ -82,8 +83,7 @@ export default function RootLayout({
           className="text-center text-sm text-gray-500 py-6 border-t"
           style={{ borderColor: "#eef2f7" }}
         >
-          © {new Date().getFullYear()} Prof. Luana Araújo • Todos os direitos
-          reservados
+          © {new Date().getFullYear()} Prof. Luana Araújo • Todos os direitos reservados
         </footer>
       </body>
     </html>
