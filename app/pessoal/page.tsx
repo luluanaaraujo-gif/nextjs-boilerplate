@@ -2,59 +2,45 @@
 import Image from "next/image";
 import Link from "next/link";
 
-/**
- * 🔧 troque por seu link curto do WhatsApp (ou com número):
- *  - Com número:  https://wa.me/5521XXXXXXXXX?text=Olá%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!
- *  - Com link curto: https://wa.me/message/SEU_CODIGO
- */
-const WHATSAPP_CTA =
-  "https://wa.me/?text=Olá%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!";
-
-/** Paleta baseada na sua foto (âmbar/azul) */
-const BRAND = {
-  primary: "#f59e0b", // amber-500
-  primaryDark: "#d97706", // amber-600
-  dark: "#0b1220", // azul escuro/black-azulado
-};
+// CTA padrão de WhatsApp (pode trocar a mensagem)
+const WHATSAPP =
+  "https://wa.me/5521997331448?text=Ol%C3%A1%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!";
 
 const services = [
   {
     key: "encceja",
     title: "Clube Aprova ENCCEJA",
-    bullet: "Trilhas semanais, aulas objetivas e checklist do que mais cai.",
+    bullet:
+      "Trilhas semanais, aulas objetivas e checklist do que mais cai. Comunidade e plano claro até a prova.",
     img: "/assets/clubeenceeja.png",
-    groupLink:
-      "https://chat.whatsapp.com/EhYhaIcxCvO7Cq2gBeceMd?mode=wwc",
+    groupLink: "https://chat.whatsapp.com/EhYhaIcxCvO7Cq2gBeceMd?mode=wwc",
     payLink: "https://mpago.li/1meRf21",
   },
   {
     key: "ifrj",
     title: "Preparação IFRJ",
     bullet:
-      "Conteúdos-chave com foco em resolução de exercícios e simulados estratégicos.",
-    img: "/assets/ifrimagem.png", // ajuste para seu nome exato se for .png.jpg
-    groupLink:
-      "https://chat.whatsapp.com/FgNimaljASF7uHwMM4bLrN?mode=wwc",
+      "Conteúdos-chave com foco em exercícios e simulados estratégicos. Estudo simples, direto e eficiente.",
+    img: "/assets/ifrjimagem.png",
+    groupLink: "https://chat.whatsapp.com/FgNimaljASF7uHwMM4bLrN?mode=wwc",
     payLink: "https://mpago.li/1RdTFbM",
   },
   {
-    key: "uerj-quimica",
+    key: "uerj",
     title: "UERJ • Química",
     bullet:
-      "Reforço em Química voltado para prova: revisão dirigida, listas comentadas e mapa do que mais cai.",
+      "Revisão dirigida, listas comentadas e mapa do que mais cai. Material claro e acompanhamento.",
     img: "/assets/uerjimagem.png",
-    groupLink:
-      "https://chat.whatsapp.com/DRI4lqURAk69zjCJYCoS6p?mode=wwc",
+    groupLink: "https://chat.whatsapp.com/DRI4lqURAk69zjCJYCoS6p?mode=wwc",
     payLink: "https://mpago.li/1RdTFbM",
   },
   {
     key: "cefet",
     title: "Mentoria CEFET",
     bullet:
-      "Planejamento prático e acompanhamento de perto para chegar confiante na prova.",
-    img: "/assets/colegiocp2.png", // usando esta imagem até você enviar a do CEFET
-    // se tiver grupo de CEFET, coloque aqui:
-    groupLink: "https://wa.me/?text=Tenho%20interesse%20na%20mentoria%20CEFET",
+      "Planejamento prático, revisão do que mais cai e acompanhamento de perto até a prova.",
+    img: "/assets/luana-hero.png", // troque quando tiver a imagem do CEFET
+    groupLink: "https://wa.me/5521997331448?text=Tenho%20interesse%20na%20mentoria%20CEFET",
     payLink: "https://mpago.li/1RdTFbM",
   },
 ];
@@ -73,23 +59,14 @@ const testimonials = [
   {
     name: "Larissa C.",
     text:
-      "Eu precisava de um plano claro e acompanhamento. A mentoria CEFET me deixou segura para a prova.",
+      "Eu precisava de um plano claro e acompanhamento. A mentoria do CEFET me deixou segura para a prova.",
   },
 ];
 
 const socials = [
-  {
-    name: "Instagram",
-    href: "https://instagram.com", // troque pelo seu
-  },
-  {
-    name: "YouTube",
-    href: "https://youtube.com", // troque pelo seu
-  },
-  {
-    name: "TikTok",
-    href: "https://tiktok.com", // troque pelo seu
-  },
+  { name: "Instagram", href: "https://instagram.com" },
+  { name: "YouTube", href: "https://youtube.com" },
+  { name: "TikTok", href: "https://tiktok.com" },
 ];
 
 export const metadata = {
@@ -98,72 +75,20 @@ export const metadata = {
     "Mentorias ENCCEJA, IFRJ, UERJ (Química) e CEFET. Trilha, plano e acompanhamento de perto para sua aprovação.",
 };
 
-export default function PersonalHome() {
+export default function PersonalLanding() {
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      {/* NAVBAR */}
-      <nav className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <Link href="/pessoal" className="group inline-flex items-center gap-3">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full ring-2 ring-offset-2 ring-amber-500">
-              <Image
-                src="/assets/luana-hero.png"
-                alt="Luana Araújo"
-                width={36}
-                height={36}
-                className="h-full w-full rounded-full object-cover"
-                priority
-              />
-            </span>
-            <span className="font-semibold tracking-tight">
-              Prof. Luana Araújo
-            </span>
-          </Link>
-
-          <div className="hidden gap-6 sm:flex">
-            <a href="#servicos" className="hover:text-amber-600">
-              Mentorias
-            </a>
-            <a href="#sobre" className="hover:text-amber-600">
-              Sobre
-            </a>
-            <a href="#depoimentos" className="hover:text-amber-600">
-              Depoimentos
-            </a>
-            <a href="#contato" className="hover:text-amber-600">
-              Contato
-            </a>
-          </div>
-
-          <Link
-            href={WHATSAPP_CTA}
-            target="_blank"
-            className="hidden rounded-full bg-amber-500 px-4 py-2 text-sm font-medium text-white shadow hover:bg-amber-600 sm:inline-block"
-          >
-            Falar no WhatsApp
-          </Link>
-        </div>
-      </nav>
-
       {/* HERO */}
-      <header className="relative overflow-hidden">
-        <div
-          className="absolute inset-0 -z-10"
-          style={{
-            background: `linear-gradient(180deg, ${BRAND.primary}20, transparent 35%), radial-gradient(1200px 600px at 10% -10%, ${BRAND.primary}15, transparent 60%)`,
-          }}
-        />
+      <header className="relative overflow-hidden border-b bg-amber-50">
         <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 py-12 sm:grid-cols-2 sm:py-16">
-          <div className="order-2 sm:order-1">
+          <div>
             <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-              Transformando dificuldades em aprendizado
+              Transforme estudo em aprovação
             </h1>
-            <p className="mt-4 max-w-xl text-base text-gray-600 sm:text-lg">
-              Mais de 15 anos ajudando alunos a conquistar objetivos com trilhas
-              inteligentes, plano claro e acompanhamento próximo. ENCCEJA, IFRJ,
-              UERJ (Química) e CEFET.
+            <p className="mt-4 max-w-xl text-base text-gray-700 sm:text-lg">
+              Mentorias para ENCCEJA, IFRJ, UERJ (Química) e CEFET com aulas
+              objetivas, trilhas semanais e acompanhamento próximo.
             </p>
-
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="#servicos"
@@ -172,7 +97,7 @@ export default function PersonalHome() {
                 Ver mentorias
               </a>
               <Link
-                href={WHATSAPP_CTA}
+                href={WHATSAPP}
                 target="_blank"
                 className="rounded-full border border-gray-300 px-5 py-2.5 text-sm font-semibold hover:border-amber-400 hover:text-amber-600"
               >
@@ -180,19 +105,16 @@ export default function PersonalHome() {
               </Link>
             </div>
           </div>
-
-          <div className="order-1 sm:order-2">
-            <div className="relative mx-auto w-full max-w-[440px]">
-              <div className="absolute -inset-3 -z-10 rounded-3xl bg-amber-200/40 blur-2xl" />
-              <Image
-                src="/assets/luana-hero.png"
-                alt="Luana Araújo"
-                width={880}
-                height={880}
-                priority
-                className="h-auto w-full rounded-3xl border border-amber-100 object-cover shadow-xl"
-              />
-            </div>
+          <div className="relative">
+            <div className="absolute -inset-4 -z-10 rounded-3xl bg-amber-200/40 blur-2xl" />
+            <Image
+              src="/assets/luana-hero.png"
+              alt="Luana Araújo"
+              width={880}
+              height={880}
+              priority
+              className="h-auto w-full max-w-[440px] rounded-3xl border border-amber-100 object-cover shadow-xl mx-auto"
+            />
           </div>
         </div>
       </header>
@@ -200,21 +122,18 @@ export default function PersonalHome() {
       {/* SERVIÇOS */}
       <section id="servicos" className="bg-gray-50 py-14 sm:py-20">
         <div className="mx-auto max-w-6xl px-4">
-          <div className="mb-8 flex items-end justify-between">
-            <div>
-              <h2 className="text-2xl font-bold sm:text-3xl">Mentorias</h2>
-              <p className="mt-2 max-w-2xl text-sm text-gray-600 sm:text-base">
-                Escolha a trilha certa para o seu objetivo e estude com
-                direcionamento e constância.
-              </p>
-            </div>
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold sm:text-3xl">Mentorias</h2>
+            <p className="mt-2 max-w-2xl text-sm text-gray-600 sm:text-base">
+              Escolha a trilha certa para o seu objetivo.
+            </p>
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s) => (
-              <div
+              <article
                 key={s.key}
-                className="group relative overflow-hidden rounded-2xl border bg-white shadow-sm transition hover:shadow-md"
+                className="group overflow-hidden rounded-2xl border bg-white shadow-sm transition hover:shadow-md"
               >
                 <div className="relative">
                   <Image
@@ -232,7 +151,6 @@ export default function PersonalHome() {
 
                 <div className="p-4">
                   <p className="min-h-[56px] text-sm text-gray-600">{s.bullet}</p>
-
                   <div className="mt-4 flex flex-col gap-2">
                     <Link
                       href={s.groupLink}
@@ -250,18 +168,17 @@ export default function PersonalHome() {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
 
           {/* CTA abaixo dos cards */}
           <div className="mx-auto mt-10 flex max-w-3xl flex-col items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50 px-6 py-6 text-center">
             <p className="text-sm text-amber-900 sm:text-base">
-              Não sabe por onde começar? Fale comigo e eu te indico a melhor
-              trilha para o seu caso.
+              Não sabe por onde começar? Fale comigo e eu te indico a melhor trilha.
             </p>
             <Link
-              href={WHATSAPP_CTA}
+              href={WHATSAPP}
               target="_blank"
               className="rounded-full bg-amber-500 px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-amber-600"
             >
@@ -278,17 +195,20 @@ export default function PersonalHome() {
             <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">
               Quem sou eu
             </span>
-            <h2 className="mt-3 text-2xl font-bold sm:text-3xl">
-              Prof. Luana Araújo
-            </h2>
+            <h2 className="mt-3 text-2xl font-bold sm:text-3xl">Prof. Luana Araújo</h2>
             <p className="mt-3 text-gray-700">
-              Sou professora e mentora com mais de 15 anos de experiência,
-              ajudando alunos a transformarem dificuldades em aprendizado. Atuo
-              com foco em ENCCEJA, IFRJ, UERJ (Química) e CEFET. Minha
-              abordagem é prática, clara e focada no que mais cai, com trilhas,
-              revisão inteligente e acompanhamento próximo.
+              Sou professora e mentora com mais de 15 anos de experiência, ajudando
+              alunos a transformar dificuldades em aprendizado. Minha abordagem é
+              prática e direta ao ponto: trilhas semanais, mapas do que mais cai,
+              revisão inteligente e listas comentadas.
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
+            <ul className="mt-6 space-y-2 text-gray-700">
+              <li>• ENCCEJA — plano claro até a prova</li>
+              <li>• IFRJ — conteúdo-chave e simulados estratégicos</li>
+              <li>• UERJ • Química — revisão dirigida e listas comentadas</li>
+              <li>• CEFET — planejamento prático com acompanhamento</li>
+            </ul>
+            <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href="#servicos"
                 className="rounded-full border border-gray-300 px-4 py-2 text-sm font-medium hover:border-amber-400 hover:text-amber-600"
@@ -296,7 +216,7 @@ export default function PersonalHome() {
                 Ver mentorias
               </a>
               <Link
-                href={WHATSAPP_CTA}
+                href={WHATSAPP}
                 target="_blank"
                 className="rounded-full bg-amber-500 px-4 py-2 text-sm font-semibold text-white shadow hover:bg-amber-600"
               >
@@ -326,16 +246,13 @@ export default function PersonalHome() {
             Histórias reais de alunos que estudaram com método e direcionamento.
           </p>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((t, i) => (
-              <figure
-                key={i}
-                className="rounded-2xl border bg-white p-5 shadow-sm"
-              >
-                <blockquote className="text-gray-700">{t.text}</blockquote>
+              <figure key={i} className="rounded-2xl border bg-white p-5 shadow-sm">
+                <blockquote className="text-gray-700">“{t.text}”</blockquote>
                 <figcaption className="mt-4 flex items-center gap-3">
                   <div className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-100 font-semibold text-amber-800">
-                    {t.name.split(" ")[0][0]}
+                    {t.name[0]}
                   </div>
                   <div className="text-sm font-medium">{t.name}</div>
                 </figcaption>
@@ -371,33 +288,19 @@ export default function PersonalHome() {
             <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6">
               <h3 className="text-xl font-bold">Fale comigo</h3>
               <p className="mt-2 text-gray-700">
-                Quer ajuda para escolher a trilha certa? Fala comigo no
-                WhatsApp — respondo rapidinho!
+                Quer ajuda para escolher a trilha certa? Me chama no WhatsApp!
               </p>
               <Link
-                href={WHATSAPP_CTA}
+                href={WHATSAPP}
                 target="_blank"
                 className="mt-4 inline-flex rounded-full bg-amber-500 px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-amber-600"
               >
-                Chamar no WhatsApp
+                Abrir WhatsApp
               </Link>
             </div>
           </div>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer className="border-t bg-white">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-center sm:flex-row sm:text-left">
-          <p className="text-sm text-gray-600">
-            © {new Date().getFullYear()} Prof. Luana Araújo — Todos os direitos
-            reservados
-          </p>
-          <div className="text-xs text-gray-500">
-            Feito com foco no que mais cai • Direção + constância
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
