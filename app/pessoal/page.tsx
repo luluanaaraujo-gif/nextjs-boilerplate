@@ -2,6 +2,40 @@
 import Image from "next/image";
 import Link from "next/link";
 
+// app/pessoal/page.tsx
+import Image from "next/image";
+import Link from "next/link";
+import SiteHeader from "@/app/components/SiteHeader";
+
+/**
+ * 🔧 Troque pelo seu link curto do WhatsApp (ou com número):
+ *  - Com número:  https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!
+ *  - Com link curto: https://wa.me/message/SEU_CODIGO
+ */
+const WHATSAPP_CTA =
+  "https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!";
+
+/** 🎨 Paleta baseada na sua marca (âmbar/azul) */
+const BRAND = {
+  primary: "bg-amber-500",
+  primaryHover: "hover:bg-amber-600",
+  ring: "ring-amber-200",
+  textPrimary: "text-amber-600",
+};
+
+export default function PaginaPessoal() {
+  return (
+    <>
+      {/* 🌟 Cabeçalho fixo no topo */}
+      <SiteHeader
+        whatsUrl={WHATSAPP_CTA}
+        tiktokUrl="https://www.tiktok.com/@prof.luanaaraujo"
+      />
+
+      {/* Conteúdo principal */}
+      <main className="max-w-6xl mx-auto px-6 py-12">
+        {/* seu conteúdo atual continua daqui pra baixo */}
+
 /**
  * Troque pelo seu link curto de WhatsApp (ou com número).
  *  - Com número: https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!
