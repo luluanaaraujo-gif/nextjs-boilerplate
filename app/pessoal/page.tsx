@@ -126,11 +126,6 @@ export default function PaginaPessoal() {
 
       />
 
-      {/* Conteúdo principal */}
-      <main className="max-w-6xl mx-auto px-6 py-12">
-        {/* seu conteúdo atual continua daqui pra baixo */}
-
-/**
  * Troque pelo seu link curto de WhatsApp (ou com número).
  *  - Com número: https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!
  *  - Com link curto: https://wa.me/message/SEU_CODIGO
