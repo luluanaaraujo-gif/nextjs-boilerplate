@@ -1,40 +1,26 @@
 // app/page.tsx
-export default function HomePage() {
+export default function Home() {
   return (
     <>
-      {/* HERO só aqui na home */}
-      <section
-        className="relative bg-cover bg-center"
-        style={{ backgroundImage: "url('/assets/luana-hero.png')" }}
-      >
-        <div className="bg-black/70 flex flex-col items-center justify-center text-center py-20 px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Prof. Luana Araújo
-          </h2>
-          <p className="text-lg text-white max-w-2xl">
-            Transformando dificuldades em aprendizado. Mais de 15 anos de
-            experiência ajudando alunos a conquistar seus objetivos.
-          </p>
-          <div className="mt-6">
-            <a
-              href="/sobre#mentoria-cefet"
-              className="px-6 py-3 bg-amber-500 text-white font-semibold rounded-lg shadow-lg hover:bg-amber-600 transition"
-            >
-              Mentoria CEFET
-            </a>
+      <section className="relative overflow-hidden border-b bg-amber-50">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-16 md:grid-cols-2 md:items-center">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold">Prof. Luana Araújo</h1>
+            <p className="mt-4 text-gray-700">
+              Transformando dificuldades em aprendizado. Mais de 15 anos ajudando alunos…
+            </p>
+            <div className="mt-6 flex gap-3">
+              <a href="/sobre" className="rounded-lg bg-amber-500 px-4 py-2 text-white">Conheça mais</a>
+              <a href="https://wa.me/5521997331448" className="rounded-lg border px-4 py-2">WhatsApp</a>
+            </div>
+          </div>
+          <div>
+            <img src="/assets/luana-hero.png" alt="Luana" className="rounded-2xl border object-cover" />
           </div>
         </div>
       </section>
-
-      {/* Conteúdo adicional da home, se quiser */}
-      <section className="mt-10">
-        <h3 className="text-2xl font-semibold text-gray-800">
-          Bem-vindo(a)!
-        </h3>
-        <p className="mt-3 text-gray-700">
-          Escolha uma mentoria ou conheça mais sobre meu trabalho.
-        </p>
-      </section>
+      {/* …conteúdo adicional da home se quiser… */}
     </>
   );
 }
+
