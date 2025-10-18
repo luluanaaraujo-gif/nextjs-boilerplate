@@ -4,11 +4,11 @@ import Link from "next/link";
 
 /**
  * Troque pelo seu link curto de WhatsApp (ou com número).
- *  - Com número: https://wa.me/5521SEUNUMERO?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!
+ *  - Com número: https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!
  *  - Com link curto: https://wa.me/message/SEU_CODIGO
  */
 const WHATSAPP_CTA =
-  "https://wa.me/5521XXXXXXX?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!";
+  "https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!";
 
 /** Paleta (usa as cores que você já configurou no Tailwind) */
 const BRAND = {
@@ -109,7 +109,7 @@ const DEPOIMENTOS = [
 const REDES = [
   {
     nome: "Instagram",
-    href: "https://instagram.com/SEU_USER",
+    href: "https://instagram.com/@prof.luanaaraujo",
     icon: (
       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
         <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.75a.75.75 0 100 1.5.75.75 0 000-1.5z" />
@@ -118,7 +118,7 @@ const REDES = [
   },
   {
     nome: "YouTube",
-    href: "https://youtube.com/@SEU_CANAL",
+    href: "https://youtube.com/@prof.luanaraujo",
     icon: (
       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
         <path d="M23.5 6.2s-.2-1.7-.8-2.5c-.8-.8-1.6-.8-2-1C18.6 2.2 12 2.2 12 2.2h0s-6.6 0-8.7.5c-.4.2-1.2.2-2 1C.7 4.4.5 6.2.5 6.2S0 8.2 0 10.2v1.5c0 2 .5 4 5.3 4.4 1.9.2 6.7.3 6.7.3s6.6 0 8.7-.5c.4-.2 1.2-.2 2-1 .6-.8.8-2.5.8-2.5s.5-2 .5-4V10.2c0-2-.5-4-5.3-4.4zM9.6 13.8V7.6l6 3.1-6 3.1z" />
@@ -127,7 +127,7 @@ const REDES = [
   },
   {
     nome: "TikTok",
-    href: "https://www.tiktok.com/@SEU_USER",
+    href: "https://www.tiktok.com/@prof.luanaaraujo",
     icon: (
       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
         <path d="M12.66 2h2.63c.15 1.46.74 2.66 1.84 3.61a5.74 5.74 0 002.92 1.24v2.6a8.06 8.06 0 01-4.42-1.23v6.44a5.3 5.3 0 01-1.08 3.33 5.33 5.33 0 01-3.26 1.99 6.05 6.05 0 01-1.23.12 5.33 5.33 0 01-3.8-1.57 5.4 5.4 0 01-1.57-3.86 5.36 5.36 0 011.57-3.84 5.22 5.22 0 013.82-1.58c.26 0 .54.02.85.06v2.8a2.8 2.8 0 00-.86-.15 2.54 2.54 0 00-1.84.72 2.53 2.53 0 00-.74 1.85c0 .74.25 1.36.74 1.86.5.5 1.1.75 1.82.75a2.37 2.37 0 001.83-.77c.5-.5.76-1.1.76-1.83V2z" />
@@ -260,7 +260,7 @@ export default function PessoalPage() {
               Transformando dificuldades em aprendizado
             </h1>
             <p className="mt-4 max-w-xl text-gray-700">
-              Mais de 15 anos ajudando alunos a conquistar seus objetivos
+              Mais de 20 anos ajudando alunos a conquistar seus objetivos
               (ENCCEJA, IFRJ, UERJ – Química, **Pedro II** e **CEFET-RJ**) com trilhas, revisão
               inteligente e acompanhamento próximo.
             </p>
@@ -337,7 +337,7 @@ export default function PessoalPage() {
           <div className="order-2 lg:order-1">
             <SectionTitle eyebrow="Sobre mim" title="Quem é a Prof. Luana Araújo" />
             <p className="mt-3 text-gray-700">
-              Sou professora e mentora com mais de 15 anos de experiência ajudando
+              Sou professora e mentora com mais de 20 anos de experiência ajudando
               alunos a transformar dificuldades em aprendizado. Minha abordagem é
               prática e humana: trilhas, revisões inteligentes, mapas mentais e
               acompanhamento próximo para você estudar com clareza e constância,
