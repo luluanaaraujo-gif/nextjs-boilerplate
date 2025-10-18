@@ -18,6 +18,21 @@ const BRAND = {
   textPrimary: "text-amber-600",
 };
 
+// Cabeçalho da página principal
+<header className="w-full bg-[#0b1220] text-white py-4 shadow-md">
+  <div className="max-w-6xl mx-auto flex justify-between items-center px-6">
+    <h1 className="text-xl font-semibold">Prof. Luana Araújo</h1>
+    <nav className="flex gap-4 text-sm">
+      <Link href="#mentorias" className="hover:text-amber-400">Mentorias</Link>
+      <Link href="#sobre" className="hover:text-amber-400">Sobre</Link>
+      <Link href="#contato" className="hover:text-amber-400">Contato</Link>
+      <Link href="https://wa.me/5521997331448" className="bg-amber-500 hover:bg-amber-600 text-black px-3 py-1 rounded-md">
+        WhatsApp
+      </Link>
+    </nav>
+  </div>
+</header>
+
 /** Mentorias (novas inclusões: Reforço escolar, Pedro II, CEFET-RJ) */
 const MENTORIAS = [
   {
