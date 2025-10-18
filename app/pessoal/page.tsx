@@ -99,17 +99,7 @@ export default function PaginaPessoal() {
           </nav>
         )}
       </header>
-      {/* ======== Fim do cabeçalho ======== */}
-
-            </Link>
-            <Link
-              href="https://www.tiktok.com/@prof.luanaaraujo"
-              target="_blank"
-              className="hover:text-amber-400 transition-colors>
-              TikTok
-            </Link>
-          </nav>
-
+      
           {/* Botão mobile (menu sanduíche) */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
