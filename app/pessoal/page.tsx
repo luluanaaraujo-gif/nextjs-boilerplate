@@ -2,11 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// app/pessoal/page.tsx
-import Image from "next/image";
-import Link from "next/link";
-import SiteHeader from "@/app/components/SiteHeader";
-
 /**
  * 🔧 Troque pelo seu link curto do WhatsApp (ou com número):
  *  - Com número:  https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!
@@ -26,10 +21,87 @@ const BRAND = {
 export default function PaginaPessoal() {
   return (
     <>
-      {/* 🌟 Cabeçalho fixo no topo */}
-      <SiteHeader
-        whatsUrl={WHATSAPP_CTA}
-        tiktokUrl="https://www.tiktok.com/@prof.luanaaraujo"
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+
+/**
+ * 🔗 Seu link curto do WhatsApp (ou com número)
+ */
+const WHATSAPP_CTA =
+  "https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!";
+
+/** 🎨 Paleta baseada na sua marca (âmbar/azul) */
+const BRAND = {
+  primary: "bg-amber-500",
+  primaryHover: "hover:bg-amber-600",
+  ring: "ring-amber-200",
+  textPrimary: "text-amber-600",
+};
+
+export default function PaginaPessoal() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-[#fffaf2] text-[#0b1220]">
+      {/* ===================== */}
+      {/* 🔝 Cabeçalho fixo no topo */}
+      {/* ===================== */}
+      <header className="w-full fixed top-0 left-0 bg-[#0b1220] text-white shadow-md z-50">
+        <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+          <h1 className="text-lg font-semibold">Prof. Luana Araújo</h1>
+
+          {/* Navegação desktop */}
+          <nav className="hidden md:flex gap-6 text-sm">
+            <Link href="#mentorias" className="hover:text-amber-400 transition-colors">
+              Mentorias
+            </Link>
+            <Link href="#sobre" className="hover:text-amber-400 transition-colors">
+              Sobre
+            </Link>
+            <Link href="#contato" className="hover:text-amber-400 transition-colors">
+              Contato
+            </Link>
+            <Link
+              href={WHATSAPP_CTA}
+              className="bg-amber-500 hover:bg-amber-600 text-black px-3 py-1 rounded-md transition"
+              target="_blank"
+            >
+              WhatsApp
+            </Link>
+            <Link
+              href="https://www.tiktok.com/@prof.luanaaraujo"
+              target="_blank"
+              className="hover:text-amber-400 transition-colors"
+            >
+              TikTok
+            </Link>
+          </nav>
+
+          {/* Botão mobile (menu sanduíche) */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden flex flex-col justify-center items-center w-8 h-8 border border-white/30 rounded"
+            aria-label="Abrir menu"
+          >
+            <div
+              className={`h-0.5 w-5 bg-white transition-transform duration-300 ${
+                menuOpen ? "rotate-45 translate-y-[5px]" : ""
+              }`}
+            />
+            <div
+              className={`h-0.5 w-5 bg-white my-[3px] transition-opacity duration-300 ${
+                menuOpen ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <div
+              className={`h-0.5 w-5 bg-white transition-transform duration-300 ${
+                menuOpen ? "-rotate-45 -translate-y-[5px]" : ""
+              }`}
+            />
+          </button>
+        </
+
       />
 
       {/* Conteúdo principal */}
