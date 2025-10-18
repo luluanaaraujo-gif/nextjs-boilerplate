@@ -1,28 +1,6 @@
 // app/pessoal/page.tsx
 import Image from "next/image";
 import Link from "next/link";
-
-/**
- * 🔧 Troque pelo seu link curto do WhatsApp (ou com número):
- *  - Com número:  https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!
- *  - Com link curto: https://wa.me/message/SEU_CODIGO
- */
-const WHATSAPP_CTA =
-  "https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!";
-
-/** 🎨 Paleta baseada na sua marca (âmbar/azul) */
-const BRAND = {
-  primary: "bg-amber-500",
-  primaryHover: "hover:bg-amber-600",
-  ring: "ring-amber-200",
-  textPrimary: "text-amber-600",
-};
-
-export default function PaginaPessoal() {
-  return (
-    <>
-import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 
 /**
@@ -31,7 +9,7 @@ import { useState } from "react";
 const WHATSAPP_CTA =
   "https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!";
 
-/** 🎨 Paleta baseada na sua marca (âmbar/azul) */
+/** 🎨 Paleta (mesmas cores que você já usava) */
 const BRAND = {
   primary: "bg-amber-500",
   primaryHover: "hover:bg-amber-600",
@@ -43,16 +21,14 @@ export default function PaginaPessoal() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#fffaf2] text-[#0b1220]">
-      {/* ===================== */}
-      {/* 🔝 Cabeçalho fixo no topo */}
-      {/* ===================== */}
-      <header className="w-full fixed top-0 left-0 bg-[#0b1220] text-white shadow-md z-50">
-        <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+    <div className="min-h-screen bg-amber-50/30 text-[#0b1220]">
+      {/* ========= Cabeçalho fixo ========= */}
+      <header className="fixed top-0 left-0 z-50 w-full bg-[#0b1220] text-white shadow-md">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <h1 className="text-lg font-semibold">Prof. Luana Araújo</h1>
 
-          {/* Navegação desktop */}
-          <nav className="hidden md:flex gap-6 text-sm">
+          {/* Navegação – desktop */}
+          <nav className="hidden gap-6 text-sm md:flex">
             <Link href="#mentorias" className="hover:text-amber-400 transition-colors">
               Mentorias
             </Link>
@@ -64,10 +40,67 @@ export default function PaginaPessoal() {
             </Link>
             <Link
               href={WHATSAPP_CTA}
-              className="bg-amber-500 hover:bg-amber-600 text-black px-3 py-1 rounded-md transition"
               target="_blank"
+              className="rounded-md bg-amber-500 px-3 py-1 font-medium text-black transition hover:bg-amber-600"
             >
               WhatsApp
+            </Link>
+            <Link
+              href="https://www.tiktok.com/@prof.luanaaraujo"
+              target="_blank"
+              className="rounded-md border border-white/20 px-3 py-1 font-medium hover:bg-white/10"
+            >
+              TikTok
+            </Link>
+          </nav>
+
+          {/* Botão sanduíche – mobile */}
+          <button
+            aria-label="Abrir menu"
+            onClick={() => setMenuOpen((v) => !v)}
+            className="rounded-md p-2 hover:bg-white/10 md:hidden"
+          >
+            <span className="block h-0.5 w-6 bg-white" />
+            <span className="mt-1 block h-0.5 w-6 bg-white" />
+            <span className="mt-1 block h-0.5 w-6 bg-white" />
+          </button>
+        </div>
+
+        {/* Menu móvel */}
+        {menuOpen && (
+          <nav className="border-t border-white/10 bg-[#0b1220] md:hidden">
+            <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-3 text-sm">
+              <Link href="#mentorias" onClick={() => setMenuOpen(false)} className="hover:text-amber-400">
+                Mentorias
+              </Link>
+              <Link href="#sobre" onClick={() => setMenuOpen(false)} className="hover:text-amber-400">
+                Sobre
+              </Link>
+              <Link href="#contato" onClick={() => setMenuOpen(false)} className="hover:text-amber-400">
+                Contato
+              </Link>
+              <div className="mt-1 flex gap-3">
+                <Link
+                  href={WHATSAPP_CTA}
+                  target="_blank"
+                  className="rounded-md bg-amber-500 px-3 py-1 font-medium text-black hover:bg-amber-600"
+                >
+                  WhatsApp
+                </Link>
+                <Link
+                  href="https://www.tiktok.com/@prof.luanaaraujo"
+                  target="_blank"
+                  className="rounded-md border border-white/20 px-3 py-1 font-medium hover:bg-white/10"
+                >
+                  TikTok
+                </Link>
+              </div>
+            </div>
+          </nav>
+        )}
+      </header>
+      {/* ======== Fim do cabeçalho ======== */}
+
             </Link>
             <Link
               href="https://www.tiktok.com/@prof.luanaaraujo"
