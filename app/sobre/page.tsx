@@ -1,120 +1,145 @@
-// app/sobre/page.tsx
-import React from "react";
-import { FaInstagram, FaWhatsapp, FaFacebook, FaStar } from "react-icons/fa";
+// app/pessoal/page.tsx
+import Image from "next/image";
+import Link from "next/link";
 
-export const metadata = {
-  title: "Sobre • Prof. Luana Araújo",
-  description: "Página pessoal da Prof. Luana Araújo: mentoria, reforço escolar e preparação para provas.",
-};
+const WHATSAPP_CTA =
+  "https://wa.me/5521976739159?text=Olá%20Luana,%20quero%20saber%20mais%20sobre%20as%20mentorias!";
 
-export default function SobrePage() {
+export default function PessoalPage() {
   return (
-    <main className="min-h-screen bg-gray-50">
-      {/* Seção Hero */}
-      <section className="bg-amber-500 text-white text-center py-16 px-4">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Prof. Luana Araújo</h1>
-        <p className="text-lg max-w-2xl mx-auto">
-          Transformando dificuldades em aprendizado. Mais de 15 anos ajudando alunos a conquistar seus objetivos.
-        </p>
-      </section>
-
-      {/* Quem sou eu */}
-      <section className="max-w-5xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-8 items-center">
-        <img
-          src="/assets/luana-hero.png"
-          alt="Professora Luana Araújo"
-          className="rounded-2xl shadow-lg object-cover w-full"
-        />
-        <div>
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Quem sou eu</h2>
-          <p className="text-gray-600 leading-relaxed">
-            Sou professora e mentora dedicada à educação. Auxilio alunos que buscam reforço escolar e preparação
-            para provas como ENCCEJA, IFRJ, UERJ e CEFET. Meu objetivo é mostrar que aprender pode ser mais simples,
-            eficiente e prazeroso com a metodologia certa.
+    <main className="font-sans">
+      {/* Hero */}
+      <section className="bg-amber-500 text-white py-12 px-6 text-center">
+        <div className="flex flex-col items-center gap-4">
+          <Image
+            src="/assets/luana-hero.png"
+            alt="Prof. Luana Araújo"
+            width={120}
+            height={120}
+            className="rounded-full border-4 border-white shadow-lg"
+          />
+          <h1 className="text-3xl font-bold">Prof. Luana Araújo</h1>
+          <p className="max-w-xl">
+            Transformando dificuldades em aprendizado. Mais de 15 anos ajudando
+            alunos a conquistar seus objetivos.
           </p>
         </div>
       </section>
 
-      {/* Cards de Mentorias */}
-      <section className="bg-white py-16 px-6">
-        <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">Mentorias</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {/* Quem sou eu */}
+      <section className="py-12 px-6 max-w-4xl mx-auto text-center">
+        <h2 className="text-2xl font-bold mb-4">Quem sou eu</h2>
+        <p className="text-gray-700 leading-relaxed">
+          Sou professora e mentora com mais de 15 anos de experiência, com foco
+          em ENCCEJA, IFRJ, UERJ (Química) e CEFET. Minha abordagem é prática,
+          clara e objetiva, com trilhas, revisões inteligentes e
+          acompanhamento próximo.
+        </p>
+      </section>
+
+      {/* Serviços / Mentorias */}
+      <section className="bg-gray-50 py-12 px-6">
+        <h2 className="text-2xl font-bold text-center mb-8">Mentorias</h2>
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {[
             {
               title: "Clube Aprova ENCCEJA",
-              desc: "Trilhas semanais, aulas objetivas, checklist e grupo no WhatsApp.",
+              desc: "Trilhas semanais, aulas objetivas e checklist do que mais cai. Comunidade no WhatsApp e plano até a prova.",
             },
             {
               title: "Preparação IFRJ",
-              desc: "Conteúdos-chave com resolução de exercícios e simulados estratégicos.",
+              desc: "Conteúdos-chave, resolução de exercícios e simulados estratégicos. Metodologia simples e direta.",
             },
             {
               title: "UERJ • Química",
-              desc: "Reforço em Química com revisão dirigida, listas comentadas e mapas de estudo.",
+              desc: "Reforço em Química para prova: revisão dirigida, listas comentadas e mapa do que mais cai.",
             },
             {
               title: "Mentoria CEFET",
-              desc: "Planejamento prático e acompanhamento próximo para a prova do CEFET.",
+              desc: "Planejamento prático, revisão focada e acompanhamento de perto para sua aprovação.",
             },
-          ].map((mentoria, i) => (
+          ].map((s, i) => (
             <div
               key={i}
-              className="p-6 border border-gray-200 rounded-xl shadow-md hover:shadow-lg transition"
+              className="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition"
             >
-              <h3 className="text-xl font-semibold text-amber-600">{mentoria.title}</h3>
-              <p className="text-gray-600 mt-2">{mentoria.desc}</p>
-              <button className="mt-4 px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600">
-                Ver detalhes
-              </button>
+              <h3 className="text-xl font-semibold mb-2">{s.title}</h3>
+              <p className="text-gray-600 mb-4">{s.desc}</p>
+              <Link
+                href={WHATSAPP_CTA}
+                className="inline-block bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition"
+              >
+                Quero saber mais
+              </Link>
             </div>
           ))}
         </div>
       </section>
 
       {/* Depoimentos */}
-      <section className="bg-gray-100 py-16 px-6">
-        <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">Depoimentos</h2>
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+      <section className="py-12 px-6 bg-white">
+        <h2 className="text-2xl font-bold text-center mb-8">O que dizem meus alunos</h2>
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {[
-            { name: "Ana Clara", text: "Com a mentoria consegui passar no IFRJ! Material direto ao ponto." },
-            { name: "João Pedro", text: "As aulas da professora Luana mudaram minha forma de estudar. Recomendo muito!" },
-          ].map((dep, i) => (
-            <div key={i} className="p-6 bg-white rounded-xl shadow-md">
-              <p className="text-gray-600 italic">"{dep.text}"</p>
-              <div className="flex items-center mt-4">
-                <FaStar className="text-amber-500" />
-                <FaStar className="text-amber-500" />
-                <FaStar className="text-amber-500" />
-                <FaStar className="text-amber-500" />
-                <FaStar className="text-amber-500" />
-                <span className="ml-2 font-semibold">{dep.name}</span>
-              </div>
+            {
+              name: "Maria",
+              text: "A Luana mudou completamente minha forma de estudar. Passei no ENCCEJA com confiança!",
+            },
+            {
+              name: "João",
+              text: "As revisões para o IFRJ foram fundamentais para eu ser aprovado.",
+            },
+            {
+              name: "Carla",
+              text: "A mentoria para o CEFET me ajudou a organizar meus estudos e chegar preparada.",
+            },
+          ].map((d, i) => (
+            <div
+              key={i}
+              className="bg-gray-50 shadow-md rounded-xl p-6 text-center"
+            >
+              <p className="text-gray-700 italic mb-4">“{d.text}”</p>
+              <span className="font-semibold text-amber-600">— {d.name}</span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Redes Sociais */}
-      <section className="py-12 bg-white text-center">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800">Me siga nas redes sociais</h2>
-        <div className="flex justify-center gap-6 text-3xl text-amber-600">
-          <a href="https://instagram.com/prof.luanaaraujo" target="_blank"><FaInstagram /></a>
-          <a href="https://facebook.com" target="_blank"><FaFacebook /></a>
-          <a href="https://wa.me/5521997331448" target="_blank"><FaWhatsapp /></a>
+      {/* Redes sociais */}
+      <section className="bg-gray-100 py-12 px-6 text-center">
+        <h2 className="text-2xl font-bold mb-6">Minhas redes</h2>
+        <div className="flex justify-center gap-6">
+          <Link
+            href="https://instagram.com/prof.luanaaraujo"
+            className="text-pink-600 font-semibold hover:underline"
+          >
+            Instagram
+          </Link>
+          <Link
+            href="https://youtube.com"
+            className="text-red-600 font-semibold hover:underline"
+          >
+            YouTube
+          </Link>
         </div>
       </section>
 
-      {/* Contato */}
-      <footer className="bg-amber-500 text-white text-center py-6">
-        <p className="text-lg">Entre em contato direto pelo WhatsApp</p>
-        <a
-          href="https://wa.me/5521997331448"
-          className="inline-block mt-4 px-6 py-3 bg-white text-amber-600 font-bold rounded-lg shadow hover:bg-gray-100"
+      {/* Rodapé com WhatsApp */}
+      <footer className="bg-amber-500 text-white text-center py-6 relative">
+        <p>© {new Date().getFullYear()} Prof. Luana Araújo — Todos os direitos reservados</p>
+        <Link
+          href={WHATSAPP_CTA}
+          className="fixed bottom-6 right-6 bg-green-500 p-4 rounded-full shadow-lg hover:bg-green-600 transition"
         >
-          Falar no WhatsApp
-        </a>
-        <p className="mt-6 text-sm">© {new Date().getFullYear()} Prof. Luana Araújo – Todos os direitos reservados</p>
+          <Image
+            src="/assets/whatsapp.svg"
+            alt="WhatsApp"
+            width={28}
+            height={28}
+          />
+        </Link>
       </footer>
     </main>
   );
 }
+
