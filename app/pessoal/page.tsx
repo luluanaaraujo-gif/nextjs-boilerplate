@@ -112,19 +112,28 @@ export default function PaginaPessoal() {
               }`}
             />
             <div
-              className={`h-0.5 w-5 bg-white my-[3px] transition-opacity duration-300 ${
-                menuOpen ? "opacity-0" : "opacity-100"
-              }`}
-            />
-            <div
-              className={`h-0.5 w-5 bg-white transition-transform duration-300 ${
-                menuOpen ? "-rotate-45 -translate-y-[5px]" : ""
-              }`}
-            />
-          </button>
-        </
+                </button>
+  </header>
 
-      />
+  {/* ========================== */}
+  {/* CONFIGURAÇÕES PRINCIPAIS */}
+  {/* ========================== */}
+
+  {/*
+    Troque pelo seu link curto do WhatsApp (ou com número):
+    - Com número: https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!
+    - Com link curto: https://wa.me/message/SEU_CODIGO
+  */}
+  const WHATSAPP_CTA =
+    "https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!";
+
+  /** 🎨 Paleta baseada na sua marca (âmbar/azul) */
+  const BRAND = {
+    primary: "bg-amber-500",
+    primaryHover: "hover:bg-amber-600",
+    ring: "ring-amber-200",
+    textPrimary: "text-amber-600",
+  };
 
  * Troque pelo seu link curto de WhatsApp (ou com número).
  *  - Com número: https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20as%20mentorias!
