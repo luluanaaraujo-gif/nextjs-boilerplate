@@ -21,7 +21,7 @@ const BRAND = {
 /** Mentorias (novas inclusões: Reforço escolar, Pedro II, CEFET-RJ) */
 const MENTORIAS = [
   {
-    slug: "/encceja",
+    slug: "/mentorias/encceja",
     titulo: "Clube Aprova ENCCEJA",
     tag: "Popular",
     bullets: [
