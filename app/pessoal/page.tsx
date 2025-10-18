@@ -105,8 +105,7 @@ export default function PaginaPessoal() {
             <Link
               href="https://www.tiktok.com/@prof.luanaaraujo"
               target="_blank"
-              className="hover:text-amber-400 transition-colors"
-            >
+              className="hover:text-amber-400 transition-colors>
               TikTok
             </Link>
           </nav>
