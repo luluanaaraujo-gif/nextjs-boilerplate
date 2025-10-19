@@ -1,47 +1,71 @@
-// app/cefet/page.tsx
+import Image from "next/image";
+import Link from "next/link";
 
-export const metadata = {
-  title: "Mentoria CEFET • Prof. Luana Araújo",
-  description:
-    "Página dedicada à mentoria para alunos que querem se preparar para o CEFET com a Prof. Luana Araújo.",
-};
+export default function MentoriaIFRJ() {
+  const WHATSAPP_CTA =
+    "https://wa.me/5521976739159?text=Oi%20Luana%2C%20quero%20saber%20mais%20sobre%20a%20mentoria%20do%20IFRJ!";
 
-export default function CefetPage() {
   return (
-    <main className="max-w-5xl mx-auto px-6 py-10 space-y-8">
-      <section className="text-center">
-        <h1 className="text-3xl font-bold text-[#0f26d5]">
-          Mentoria para o CEFET
-        </h1>
-        <p className="mt-4 text-gray-700 leading-relaxed">
-          Essa mentoria foi criada especialmente para alunos que desejam se preparar
-          para o processo seletivo do <strong>CEFET</strong>.  
-          O objetivo é oferecer um caminho prático e eficiente, com aulas dinâmicas,
-          materiais de apoio e acompanhamento próximo.
-        </p>
-      </section>
+    <main className="bg-amber-50/30 min-h-screen flex items-center">
+      <section className="mx-auto max-w-6xl px-4 py-12 grid md:grid-cols-2 gap-10 items-center">
+        {/* Coluna de texto */}
+        <div>
+          <Link
+            href="/pessoal#mentorias"
+            className="inline-flex items-center gap-2 text-sm font-medium text-amber-700 hover:text-amber-800"
+          >
+            ← Voltar
+          </Link>
 
-      <section>
-        <h2 className="text-2xl font-semibold text-gray-800">
-          O que você vai encontrar:
-        </h2>
-        <ul className="mt-3 list-disc list-inside text-gray-700 space-y-2">
-          <li>Aulas focadas nos principais conteúdos cobrados</li>
-          <li>Listas de exercícios comentados</li>
-          <li>Simulados exclusivos</li>
-          <li>Grupo de apoio no WhatsApp</li>
-        </ul>
-      </section>
+          <span className="ml-3 inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-700">
+            Intensivo • IFRJ
+          </span>
 
-      <div className="text-center pt-6">
-        <a
-          href="/"
-          className="inline-block bg-amber-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-amber-600 transition"
-        >
-          Voltar para o início
-        </a>
-      </div>
+          <h1 className="mt-3 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            Mentoria Intensiva para o IFRJ
+          </h1>
+
+          <p className="mt-4 max-w-2xl text-gray-700 leading-relaxed">
+            A mentoria ideal para quem vai fazer a prova do IFRJ e quer revisar
+            os principais conteúdos com clareza e estratégia. Foco total nos
+            temas que mais caem e em simulados direcionados.
+          </p>
+
+          <ul className="mt-6 space-y-3 text-gray-700">
+            <li>✔️ Simulados comentados e revisões estratégicas</li>
+            <li>✔️ Mapas mentais e resumos objetivos</li>
+            <li>✔️ Acompanhamento e plano de estudo personalizado</li>
+          </ul>
+
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link
+              href={WHATSAPP_CTA}
+              className="inline-flex items-center justify-center rounded-full bg-amber-500 hover:bg-amber-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition"
+            >
+              Quero participar
+            </Link>
+
+            <Link
+              href="/pessoal"
+              className="inline-flex items-center justify-center rounded-full border px-5 py-3 text-sm font-semibold text-gray-800 hover:bg-white/60 transition"
+            >
+              Ver outras mentorias
+            </Link>
+          </div>
+        </div>
+
+        {/* Coluna da imagem */}
+        <div className="flex justify-center md:justify-end">
+          <Image
+            src="/assets/ifrjimagem.png"
+            alt="Estudantes revisando conteúdos para o IFRJ"
+            width={500}
+            height={400}
+            className="rounded-2xl shadow-lg object-cover"
+            priority
+          />
+        </div>
+      </section>
     </main>
   );
 }
-
