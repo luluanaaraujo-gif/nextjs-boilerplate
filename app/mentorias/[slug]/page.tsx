@@ -1,240 +1,326 @@
-// app/mentorias/[slug]/page.tsx
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
 
-const WHATSAPP_CTA =
-  "https://wa.me/5521XXXXXXXXX?text=Oi%20Luana,%20quero%20saber%20mais%20sobre%20as%20mentorias!";
-
-// --- Base de serviços: adicione aqui cada mentoria (um por vez) ---
-const SERVICES = {
-  encceja: {
-    title: "Mentoria ENCCEJA",
-    eyebrow: "Trilha guiada • ENCCEJA",
+export const metadata = {
+  title: "Clube Aprova ENCCEJA | Prof. Luana Araujo",
+  description:
+    "Trilha da Aprovação Guiada: plano passo a passo, aulas objetivas e checklist do que mais cai no ENCCEJA. Assinatura mensal — simples, acessível e sem burocracia.",
+  openGraph: {
+    title: "Clube Aprova ENCCEJA | Prof. Luana Araujo",
     description:
-      "Plano claro até a prova: trilhas semanais, aulas objetivas, checklist do que mais cai e comunidade no WhatsApp para tirar dúvidas.",
-    bullets: [
-      "Aulas gravadas e ao vivo (curtas e objetivas)",
-      "Trilhas semanais com o que fazer a cada dia",
-      "Checklist do que mais cai",
-      "Comunidade no WhatsApp para dúvidas",
-    ],
-    hero: {
-      image: "/assets/luana-hero.png", // troque se quiser outra imagem
-      alt: "Luana Araújo",
-    },
-    highlights: [
-      { label: "Carga horária", value: "Flexível (com trilhas semanais)" },
-      { label: "Suporte", value: "Comunidade + plantões de dúvida" },
-      { label: "Material", value: "Resumos, mapas mentais e simulados" },
-    ],
-    faq: [
-      {
-        q: "Para quem é a mentoria ENCCEJA?",
-        a: "Para quem quer um plano simples e objetivo para conquistar o certificado com segurança.",
-      },
-      {
-        q: "Como acontecem as aulas?",
-        a: "Aulas curtas e diretas, gravadas e ao vivo, com trilhas semanais para manter a constância.",
-      },
-      {
-        q: "Tenho suporte durante os estudos?",
-        a: "Sim! Você participa da comunidade no WhatsApp e conta com plantões de dúvida.",
-      },
-    ],
-    seo: {
-      title: "Mentoria ENCCEJA • Prof. Luana Araújo",
-      description:
-        "Trilhas semanais, aulas objetivas e checklist do que mais cai. Comunidade no WhatsApp e plano claro até a prova.",
-    },
-    ctaLabel: "Quero entrar na mentoria",
+      "Assine por um valor acessível, estude com trilhas semanais e conquiste seu diploma pelo ENCCEJA.",
+    images: ["/assets/encceja-trabalho.png"],
   },
+};
 
-  // Exemplo de “molde” para próximos (deixei como referência):
-  // "cefet": { ... },
-  // "pedro-ii": { ... },
-  // "reforco-escolar": { ... },
-  // "ifrj": { ... },
-  // "uerj-quimica": { ... },
-} as const;
+// ⚡ CONFIG RÁPIDA
+const WHATSAPP =
+  "https://wa.me/?text=Olá%20Luana%2C%20quero%20entrar%20no%20Clube%20Aprova%20ENCCEJA!";
+const BRAND = {
+  primary: "#0ea5e9",
+  secondary: "#fbbf24",
+  dark: "#0b1220",
+};
+const HERO_IMAGE = "/assets/encceja-trabalho.png";
+const PRICE = "R$ 29,90/mês";
+const PAYMENT_LINK = "https://mpago.li/1meRf21m";
 
-type Slug = keyof typeof SERVICES;
+function Header() {
+  return (
+    <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b">
+      <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+        <Link href="/" className="flex items-center gap-2">
+          <span
+            className="inline-flex h-8 w-8 rounded-xl"
+            style={{ background: BRAND.primary }}
+            aria-hidden
+          />
+          <strong className="text-slate-900">Prof. Luana Araujo</strong>
+        </Link>
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: Slug };
-}): Promise<Metadata> {
-  const data = SERVICES[params.slug];
-  if (!data) {
-    return {
-      title: "Mentoria • Prof. Luana Araújo",
-      description:
-        "Mentorias para ENCCEJA, IFRJ, UERJ (Química), Pedro II e CEFET-RJ. Plano claro, constância e apoio próximo.",
-    };
-  }
-  return {
-    title: data.seo.title,
-    description: data.seo.description,
-    openGraph: {
-      title: data.seo.title,
-      description: data.seo.description,
-      images: [
-        {
-          url: data.hero.image,
-          width: 1200,
-          height: 630,
-          alt: data.hero.alt,
-        },
-      ],
-    },
-  };
+        <nav className="hidden md:flex items-center gap-6 text-slate-700">
+          <Link href="/#mentorias" className="hover:text-slate-900">
+            Mentorias
+          </Link>
+          <Link href="/pessoal" className="hover:text-slate-900">
+            Quem sou eu
+          </Link>
+          <Link href="#faq" className="hover:text-slate-900">
+            Dúvidas
+          </Link>
+          <a
+            href="#matricula"
+            className="inline-flex items-center rounded-xl px-4 py-2 font-medium"
+            style={{ background: BRAND.secondary, color: "#111827" }}
+          >
+            Quero começar agora
+          </a>
+        </nav>
+      </div>
+    </header>
+  );
 }
 
-export default function ServicePage({
-  params,
-}: {
-  params: { slug: Slug };
-}) {
-  const data = SERVICES[params.slug];
-  if (!data) {
-    return (
-      <main className="max-w-4xl mx-auto px-4 py-16">
-        <h1 className="text-3xl font-bold">Mentoria não encontrada</h1>
-        <p className="mt-4 text-gray-600">
-          Essa página ainda não foi publicada. Volte para a página principal.
-        </p>
-        <Link
-          href="/pessoal"
-          className="inline-block mt-6 rounded-xl bg-amber-600 px-4 py-3 text-white hover:bg-amber-700"
-        >
-          Voltar
-        </Link>
-      </main>
-    );
-  }
-
+export default function Page() {
   return (
-    <main className="max-w-6xl mx-auto px-4 lg:px-8 py-12">
-      {/* HERO */}
-      <section className="grid lg:grid-cols-2 gap-10 items-center">
-        <div>
-          <span className="inline-block text-xs uppercase tracking-wide text-amber-700 bg-amber-100 rounded-full px-3 py-1">
-            {data.eyebrow}
-          </span>
-          <h1 className="mt-3 text-4xl font-extrabold tracking-tight">
-            {data.title}
-          </h1>
-          <p className="mt-4 text-gray-700 leading-relaxed">
-            {data.description}
-          </p>
+    <>
+      <Header />
 
-          <div className="mt-6 flex gap-3 flex-wrap">
-            <Link
-              href={WHATSAPP_CTA}
-              className="rounded-xl bg-amber-600 px-5 py-3 text-white font-medium hover:bg-amber-700"
-              target="_blank"
+      {/* HERO */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-12 lg:py-20 grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <div
+              className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium"
+              style={{ background: "#ecfeff", color: BRAND.primary }}
             >
-              {data.ctaLabel}
-            </Link>
-            <Link
-              href="/pessoal#mentorias"
-              className="rounded-xl border border-amber-300 px-5 py-3 text-amber-800 hover:bg-amber-50"
-            >
-              Ver outras mentorias
-            </Link>
+              ✅ Trilha da Aprovação Guiada • Comece hoje
+            </div>
+
+            <h1 className="mt-5 text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900">
+              Você merece mais do que um emprego que não te faz feliz.
+            </h1>
+
+            <p className="mt-4 text-lg text-slate-700 leading-relaxed">
+              O <strong>Clube Aprova ENCCEJA</strong> é o seu primeiro passo para
+              conquistar o diploma do Ensino Fundamental ou Médio sem voltar para a escola tradicional.
+              Com um plano claro, aulas objetivas e acompanhamento direto pelo WhatsApp,
+              você estuda o que <em>realmente</em> cai na prova, no seu ritmo.
+            </p>
+
+            <div className="mt-6 flex flex-col sm:flex-row gap-3">
+              <a
+                href={PAYMENT_LINK}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-semibold text-white shadow-md hover:scale-105 transition-transform"
+                style={{ background: BRAND.primary }}
+              >
+                🏆 Assinar agora — {PRICE}
+              </a>
+              <a
+                href={WHATSAPP}
+                target="_blank"
+                className="inline-flex items-center justify-center rounded-xl px-5 py-3 font-semibold border"
+                style={{ borderColor: BRAND.primary, color: BRAND.dark }}
+              >
+                Tirar dúvidas no WhatsApp
+              </a>
+            </div>
+
+            <p className="mt-3 text-sm text-slate-600">
+              ✅ Assinatura: <strong>{PRICE}</strong> • Cancele quando quiser •
+              Acesso imediato às trilhas
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5">
+              <Image
+                src={HERO_IMAGE}
+                alt="Pessoa trabalhando em área que não gosta por não ter concluído os estudos"
+                width={1200}
+                height={900}
+                className="w-full h-auto object-cover"
+                priority
+              />
+            </div>
           </div>
         </div>
+      </section>
 
-        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden ring-2 ring-amber-200">
-          <Image
-            src={data.hero.image}
-            alt={data.hero.alt}
-            fill
-            className="object-cover"
-            sizes="(max-width:1024px) 100vw, 50vw"
-            priority
+      {/* Mecanismos */}
+      <section className="bg-slate-50">
+        <div className="mx-auto max-w-6xl px-4 py-10 grid md:grid-cols-3 gap-6">
+          <Mechanism
+            title="Trilha da Aprovação Guiada"
+            desc="Você não precisa saber por onde começar — eu te mostro o caminho certo, semana a semana, com metas pequenas e checklist do que mais cai."
+            quote="Você segue o plano. Eu garanto o caminho."
+          />
+          <Mechanism
+            title="Netflix da Educação"
+            desc="Assinatura acessível, conteúdo sob demanda e acompanhamento. Troque o hábito de maratonar séries por maratonar conquistas."
+            quote="Transforme o valor da Netflix em um investimento na sua liberdade."
+          />
+          <Mechanism
+            title="Método 3x Simples"
+            desc="Aulas curtas, checklist do essencial e trilhas semanais. 3x mais simples, rápido e possível do que um supletivo tradicional."
+            quote="3x mais simples. 3x mais rápido. 3x mais possível."
           />
         </div>
       </section>
 
-      {/* O QUE INCLUI */}
-      <section className="mt-12">
-        <h2 className="text-2xl font-bold">O que você recebe</h2>
-        <ul className="mt-4 grid md:grid-cols-2 gap-3">
-          {data.bullets.map((b) => (
-            <li
-              key={b}
-              className="flex items-start gap-3 rounded-xl border border-amber-200/70 bg-white px-4 py-3"
-            >
-              <span className="mt-1 inline-block h-2 w-2 rounded-full bg-amber-500" />
-              <span className="text-gray-800">{b}</span>
-            </li>
-          ))}
-        </ul>
+      {/* Para quem é */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-14">
+          <h2 className="text-3xl font-extrabold text-slate-900">É para você que…</h2>
+          <div className="mt-6 grid md:grid-cols-2 gap-4">
+            {[
+              "Já tentou voltar a estudar, mas a rotina não deixou.",
+              "Sente vergonha de não ter o diploma e evita falar sobre isso.",
+              "Trabalha em algo que não gosta porque as melhores vagas exigem o ensino médio.",
+              "Acredita que estudar de novo seria difícil demais.",
+            ].map((t, i) => (
+              <div key={i} className="rounded-xl border p-4 text-slate-700">
+                • {t}
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-slate-700">
+            A boa notícia: o <strong>ENCCEJA</strong> é um exame do governo que garante o{" "}
+            <strong>mesmo diploma</strong> de quem concluiu os estudos em escola regular —
+            e eu te conduzo passo a passo até lá.
+          </p>
+        </div>
       </section>
 
-      {/* HIGHLIGHTS */}
-      <section className="mt-10">
-        <div className="grid sm:grid-cols-3 gap-4">
-          {data.highlights.map((h) => (
-            <div
-              key={h.label}
-              className="rounded-2xl border border-amber-200 bg-amber-50/60 p-4"
+      {/* Como funciona */}
+      <section className="bg-slate-50">
+        <div className="mx-auto max-w-6xl px-4 py-14">
+          <h2 className="text-3xl font-extrabold text-slate-900">Como funciona o Clube</h2>
+
+          <div className="mt-6 grid md:grid-cols-2 gap-5">
+            <Card title="Trilhas semanais" desc="O que estudar e quando, sem adivinhar." />
+            <Card title="Aulas curtas e objetivas" desc="Direto ao ponto do que mais cai." />
+            <Card title="Checklist ENCCEJA" desc="Acompanhe o que já dominou e o que falta." />
+            <Card title="Comunidade no WhatsApp" desc="Tire dúvidas e receba apoio real." />
+            <Card title="Assinatura mensal" desc="Acessível, recorrente e sem burocracia." />
+            <Card title="Cancele quando quiser" desc="Liberdade total e zero risco." />
+          </div>
+
+          <div className="mt-8">
+            <a
+              href={PAYMENT_LINK}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center rounded-xl px-6 py-3 font-semibold text-white"
+              style={{ background: BRAND.primary }}
             >
-              <div className="text-xs uppercase tracking-wide text-amber-700">
-                {h.label}
-              </div>
-              <div className="mt-1 text-gray-900 font-medium">{h.value}</div>
-            </div>
-          ))}
+              Quero entrar agora — {PRICE}
+            </a>
+          </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="mt-12">
-        <h3 className="text-xl font-semibold">Perguntas frequentes</h3>
-        <div className="mt-4 space-y-4">
-          {data.faq.map((item, idx) => (
-            <details
-              key={idx}
-              className="group rounded-xl border border-amber-200 bg-white px-4 py-3"
-            >
-              <summary className="cursor-pointer font-medium text-gray-900 marker:hidden">
-                {item.q}
-              </summary>
-              <p className="mt-2 text-gray-700">{item.a}</p>
-            </details>
-          ))}
+      <section id="faq" className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-14">
+          <h2 className="text-3xl font-extrabold text-slate-900">Dúvidas frequentes</h2>
+          <div className="mt-6 space-y-4">
+            <Faq
+              q="Preciso voltar para a escola?"
+              a="Não. Você estuda online, com trilhas semanais e aulas objetivas focadas no que cai no ENCCEJA."
+            />
+            <Faq
+              q="O diploma é válido?"
+              a="Sim. O ENCCEJA dá o mesmo diploma de quem concluiu o Ensino Fundamental ou Médio em escola regular, válido em todo o país."
+            />
+            <Faq
+              q="Como funciona a assinatura?"
+              a="Você paga um valor mensal acessível (como uma assinatura de streaming), tem acesso às trilhas, aulas e comunidade, e pode cancelar quando quiser."
+            />
+            <Faq
+              q="Quais formas de pagamento?"
+              a="Cartão de crédito (recorrente mensal). Assim que confirmar, seu acesso é imediato."
+            />
+            <Faq
+              q="Posso cancelar quando quiser?"
+              a="Sim. A assinatura é mensal e você pode cancelar a qualquer momento, sem multas."
+            />
+            <Faq
+              q="Tem garantia?"
+              a="Sim. Você tem 7 dias para testar o clube sem risco. Se não for pra você, é só cancelar nesse período."
+            />
+          </div>
         </div>
       </section>
 
-      {/* CTA FINAL */}
-      <section className="mt-12 rounded-2xl border border-amber-200 bg-amber-50 p-6 flex items-center justify-between gap-6 flex-wrap">
-        <div>
-          <h4 className="text-lg font-semibold">
-            Vamos começar a sua preparação?
-          </h4>
-          <p className="text-gray-700">
-            Me chame no WhatsApp para eu te orientar no primeiro passo.
+      {/* Chamada final */}
+      <section id="matricula" className="bg-slate-900">
+        <div className="mx-auto max-w-6xl px-4 py-16 text-center">
+          <h2 className="text-3xl lg:text-4xl font-extrabold text-white">
+            O futuro não espera — mas você pode decidir começar hoje.
+          </h2>
+          <p className="mt-4 text-slate-300">
+            Por menos do que o valor da Netflix, você investe em algo que muda sua vida.
+            Assinatura mensal. Sem burocracia. Cancele quando quiser.
           </p>
-        </div>
-        <div className="flex items-center gap-3">
-          <Link
-            href={WHATSAPP_CTA}
-            target="_blank"
-            className="rounded-xl bg-amber-600 px-5 py-3 text-white font-medium hover:bg-amber-700"
-          >
-            Falar no WhatsApp
-          </Link>
-          <Link
-            href="/pessoal"
-            className="rounded-xl border border-amber-300 px-5 py-3 text-amber-800 hover:bg-amber-100"
-          >
-            Voltar
-          </Link>
+
+          <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href={PAYMENT_LINK}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold"
+              style={{ background: BRAND.secondary, color: "#111827" }}
+            >
+              Fazer minha matrícula — {PRICE}
+            </a>
+            <a
+              href="#faq"
+              className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold border border-white/20 text-white"
+            >
+              Ver como funciona
+            </a>
+          </div>
         </div>
       </section>
-    </main>
+
+      <footer className="bg-white border-t">
+        <div className="mx-auto max-w-6xl px-4 py-8 text-sm text-slate-500 flex items-center justify-between">
+          <p>
+            © {new Date().getFullYear()} Prof. Luana Araujo — Todos os direitos reservados.
+          </p>
+          <div className="flex items-center gap-4">
+            <a
+              href="https://instagram.com/prof.luanaaraujo"
+              target="_blank"
+              className="hover:text-slate-700"
+            >
+              @prof.luanaaraujo
+            </a>
+            <a href={WHATSAPP} target="_blank" className="hover:text-slate-700">
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+}
+
+function Mechanism({
+  title,
+  desc,
+  quote,
+}: {
+  title: string;
+  desc: string;
+  quote: string;
+}) {
+  return (
+    <div className="rounded-2xl p-6 ring-1 ring-black/5 bg-white">
+      <h3 className="font-bold text-slate-900 text-lg">{title}</h3>
+      <p className="mt-2 text-slate-700">{desc}</p>
+      <p className="mt-3 text-sm text-slate-500 italic">“{quote}”</p>
+    </div>
+  );
+}
+
+function Card({ title, desc }: { title: string; desc: string }) {
+  return (
+    <div className="rounded-2xl p-6 bg-white ring-1 ring-black/5">
+      <h3 className="font-semibold text-slate-900">{title}</h3>
+      <p className="mt-2 text-slate-700">{desc}</p>
+    </div>
+  );
+}
+
+function Faq({ q, a }: { q: string; a: string }) {
+  return (
+    <details className="rounded-xl border p-4">
+      <summary className="cursor-pointer font-semibold text-slate-900">{q}</summary>
+      <p className="mt-2 text-slate-700">{a}</p>
+    </details>
   );
 }
