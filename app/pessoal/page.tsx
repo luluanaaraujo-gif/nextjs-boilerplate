@@ -157,7 +157,7 @@ const MENTORIAS = [
     ],
   },
   {
-    slug: "/reforco",
+    slug: "/mentorias/reforco",
     titulo: "Reforço Escolar",
     tag: "Fundamentos",
     bullets: [
