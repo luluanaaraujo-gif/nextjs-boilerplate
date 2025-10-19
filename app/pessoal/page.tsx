@@ -137,7 +137,7 @@ const MENTORIAS = [
     ],
   },
   {
-    slug: "/ifri",
+    slug: "/ifrj",
     titulo: "Preparação IFRJ",
     tag: "Intensivo",
     bullets: [
